@@ -1,0 +1,12 @@
+body{
+    
+    margin: 0px;
+}
+
+body * {
+    box-sizing: border-box;
+    /* border: dotted .1px #565656; */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+}
