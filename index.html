@@ -1,62 +1,116 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html>
 
-    </head>
-    <body>
-        <!-- <form>
-            <label>Question</label>
-            <input type="text"><br>
-            <button type="submit">Submit</button>
-        </form> -->
+<head>
+  <title>Save form Data in a Text File using JavaScript</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        <form>
-            <label>Question</label>
-            <div id='block-1'>
-                <label for='option-1'>
-                  <input type='radio' name='option' value='1' id='option-1'/>
-                  1</label>
-                <span id='result-1'></span>
-              </div>
-    
-            
-              <div id='block-2'>
-                <label for='option-2'>
-                  <input type='radio' name='option' value='2' id='option-2'/>
-                  2</label>
-                <span id='result-2'></span>
-              </div>
-   
-            
-              <div id='block-3'>
-                <label for='option-3'>
-                  <input type='radio' name='option' value='3' id='option-13'/>
-                  3</label>
-                <span id='result-3'></span>
-              </div>
-          
-            
-              <div id='block-4'>
-                <label for='option-4'>
-                  <input type='radio' name='option' value='4' id='option-4'/>
-                  4</label>
-                <span id='result-4'></span>
-              </div>
+    div {
+      padding: 10px;
+      background-color: #f6f6f6;
+      overflow: hidden;
+    }
 
-              <button type="submit">Submit</button>
-        </form>
+    input[type=text],
+    textarea,
+    select {
+      font: 17px Calibri;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-        <!-- <form>
-            <label>Question</label>
-            <input type="button"><br>
-        </form>
+    input[type=button] {
+      font: 17px Calibri;
+      width: auto;
+      float: right;
+      cursor: pointer;
+      padding: 7px;
+    }
+  </style>
+</head>
 
-        <form>
-            <label>Question</label>
-            <input type="number"><br>
-        </form> -->
+<body>
+  <div>
 
+    <!--Add few elements to the form-->
 
-    </body>
+    <div>
+      <input type="text" id="name" placeholder="Enter your name" />
+    </div>
+    <div>
+      <input type="text" id="wakeup" placeholder="What do you do when you wake up?" />
+    </div>
+    <div>
+      <input type="text" id="hobbies" placeholder="What are your hobbies" />
+    </div>
+    <div>
+      <select id="ocupation">
+        <option selected value="">-- Choose your ocupation --</option>
+        <option value="HighSchool">High School</option>
+        <option value="College">College</option>
+        <option value="Work">Work</option>
+      </select>
+    </div>
+    <div>
+      <input type="text" id="work" placeholder="Where do you study/work" />
+    </div>
+    <div>
+      <input type="text" id="sleep" placeholder="What do you do before going to sleep" />
+    </div>
+    <div>
+      <input type="text" id="food" placeholder="What is your favorite food" />
+    </div>
+    <div>
+      <input type="button" id="bt" value="Submit" onclick="saveFile()" />
+    </div>
+
+  </div>
+</body>
+<script>
+  let saveFile = () => {
+
+    // Get the data from each element on the form.
+    const name = document.getElementById('name');
+    const wakeup = document.getElementById('wakeup');
+    const hobbies = document.getElementById('hobbies');
+    const food = document.getElementById('food');
+    const work = document.getElementById('work');
+    const sleep = document.getElementById('sleep');
+    const ocupation = document.getElementById('ocupation');
+
+    // This variable stores all the data.
+    let data =
+      name.value + ' \n ' +
+      wakeup.value + ' \n ' +
+      hobbies.value + ' \n ' +
+      food.value + ' \n ' +
+      work.value + ' \n ' +
+      sleep.value + ' \n ' +
+      ocupation.value;
+
+    // Convert the text to BLOB.
+    const textToBLOB = new Blob([data], { type: 'text/plain' });
+    const sFileName = 'formData.txt';	   // The file to save the data.
+
+    let newLink = document.createElement("a");
+    newLink.download = sFileName;
+
+    if (window.webkitURL != null) {
+      newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+    }
+    else {
+      newLink.href = window.URL.createObjectURL(textToBLOB);
+      newLink.style.display = "none";
+      document.body.appendChild(newLink);
+    }
+
+    newLink.click();
+  }
+</script>
+
 </html>
