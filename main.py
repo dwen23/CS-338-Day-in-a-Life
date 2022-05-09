@@ -35,8 +35,9 @@ def input(words: list = None):
         generate_text = ''
         for i, sentence in enumerate(results):
             if i != 0:
-                prev_text = generate_text.rsplit('.', 1)[1]
-                generate_text = generate_text.rsplit('.', 1)[0]
+                prev_text = generate_text.rsplit('.', 2)[1]
+                print()
+                generate_text = generate_text.rsplit('.', 2)[0] + '.'
                 raw_text = generate(prev_text + '. ' + sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
             else:
                 raw_text = generate(sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
