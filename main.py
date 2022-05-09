@@ -33,8 +33,13 @@ def input(words: list = None):
     try:
         results = sentence_generator(words)
         generate_text = ''
-        for sentence in results:
-            raw_text = generate(sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
+        for i, sentence in enumerate(results):
+            if i != 0:
+                prev_text = generate_text.rsplit('.', 1)[1]
+                generate_text = generate_text.rsplit('.', 1)[0]
+                raw_text = generate(prev_text + '. ' + sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
+            else:
+                raw_text = generate(sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
             generate_text += raw_text + ' '
         return generate_text
     except Exception as e:
