@@ -34,8 +34,8 @@ def input(words: list = None):
         results = sentence_generator(words)
         generate_text = ''
         for sentence in results:
-            raw_text = generate(sentence)[0]['generated_text']
-            
+            raw_text = generate(sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
+            generate_text += raw_text + ' '
         return generate_text
     except Exception as e:
         LOGGER.error(e)
