@@ -38,7 +38,7 @@
   <div>
 
     <!--Add few elements to the form-->
-
+    
     <div>
       <input type="text" id="name" placeholder="Enter your name" />
     </div>
@@ -68,10 +68,12 @@
     <div>
       <input type="button" id="bt" value="Submit" onclick="saveFile()" />
     </div>
-
+    
   </div>
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
+
   let saveFile = () => {
 
     // Get the data from each element on the form.
@@ -84,32 +86,36 @@
     const ocupation = document.getElementById('ocupation');
 
     // This variable stores all the data.
-    let data =
-      name.value + ' \n ' +
-      wakeup.value + ' \n ' +
-      hobbies.value + ' \n ' +
-      food.value + ' \n ' +
-      work.value + ' \n ' +
-      sleep.value + '  \n ' +
-      ocupation.value;
+    let data = [
+      name.value,
+      wakeup.value,
+      hobbies.value,
+      ocupation.value,
+      work.value,
+      sleep.value,
+      food.value];
+    $.ajax({
+        type: "POST",
+        url: "main.py",
+    });
+    
+    // // Convert the text to BLOB.
+    // const textToBLOB = new Blob([data], { type: 'text/plain' });
+    // const sFileName = 'formData.txt';	   // The file to save the data.
 
-    // Convert the text to BLOB.
-    const textToBLOB = new Blob([data], { type: 'text/plain' });
-    const sFileName = 'formData.txt';	   // The file to save the data.
+    // let newLink = document.createElement("a");
+    // newLink.download = sFileName;
 
-    let newLink = document.createElement("a");
-    newLink.download = sFileName;
+    // if (window.webkitURL != null) {
+    //   newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+    // }
+    // else {
+    //   newLink.href = window.URL.createObjectURL(textToBLOB);
+    //   newLink.style.display = "none";
+    //   document.body.appendChild(newLink);
+    // }
 
-    if (window.webkitURL != null) {
-      newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-    }
-    else {
-      newLink.href = window.URL.createObjectURL(textToBLOB);
-      newLink.style.display = "none";
-      document.body.appendChild(newLink);
-    }
-
-    newLink.click();
+    // newLink.click();
   }
 </script>
 
