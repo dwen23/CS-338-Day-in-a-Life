@@ -10,7 +10,7 @@ def sentence_generator(key_words):
 
     s1 = nlp([key_words[0], 'morning', key_words[1]], **params)
     s2 = nlp(['Later', 'go to', key_words[2], key_words[3]], **params)
-    s3 = nlp(['After', key_words[3], 'enjoy', key_words[4]], **params)
+    s3 = nlp(['After', key_words[2], 'enjoy', key_words[4]], **params)
     s4 = nlp(['dinner', key_words[5]], **params)
     s5 = nlp(['night', key_words[6]], **params)
 
