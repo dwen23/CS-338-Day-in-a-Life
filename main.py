@@ -21,8 +21,8 @@ app.add_middleware(
 
 story_gen = pipeline("text-generation", "jcpwfloi/gpt2-story-generation", handle_long_generation="hole", early_stopping=False)
 
-@app.post('/generate')
-async def generate(sentence: str = None):
+
+def generate(sentence):
     try:
         return story_gen(sentence)
     except Exception as e:
@@ -32,7 +32,8 @@ async def generate(sentence: str = None):
 @app.post('/input')
 async def input(words: list = None):
     try:
-        return generate(sentence_generator(words)[0])
+        results = sentence_generator(words)
+        return generate(results[0])
     except Exception as e:
         LOGGER.error(e)
         return {'status': False, 'msg': e}, 400

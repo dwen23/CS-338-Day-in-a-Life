@@ -8,11 +8,13 @@ def sentence_generator(key_words):
     params = {"do_sample":True, "num_beams":4, "no_repeat_ngram_size":2, "early_stopping":True}    #decoding params
 
 
-    sentence_one = nlp([key_words[0], 'morning', key_words[1]], **params)
-    sentence_two = nlp(['Later', 'go to', key_words[2], key_words[3]], **params)
-    sentence_three = nlp(['After', key_words[3], 'enjoy', key_words[4]], **params)
-    sentence_four = nlp(['dinner', key_words[5]], **params)
-    sentence_five = nlp(['night', key_words[6]], **params)
+    s1 = nlp([key_words[0], 'morning', key_words[1]], **params)
+    s2 = nlp(['Later', 'go to', key_words[2], key_words[3]], **params)
+    s3 = nlp(['After', key_words[3], 'enjoy', key_words[4]], **params)
+    s4 = nlp(['dinner', key_words[5]], **params)
+    s5 = nlp(['night', key_words[6]], **params)
+
+    return [s1, s2, s3, s4, s5]
 
 
     
