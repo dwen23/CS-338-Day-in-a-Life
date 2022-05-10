@@ -36,7 +36,7 @@ def input(words: list = None):
         for i, sentence in enumerate(results):
             if i != 0:
                 prev_text = generate_text.rsplit('.', 2)[1]
-                print()
+                # print(prev_text)
                 generate_text = generate_text.rsplit('.', 2)[0] + '.'
                 raw_text = generate(prev_text + '. ' + sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
             else:
@@ -49,4 +49,4 @@ def input(words: list = None):
 
 if __name__ == '__main__':
     # uvicorn.run(app=app, host='0.0.0.0', port=8000)
-    print(input(["jack", "eat breakfast", "college", "northwestern", "watch tv", "pizza", "play on the phone"]))
+    print(input(["Emily", "take a shower", "college", "Northwestern", "hang out with my friends", "pasta", "finish my homework"]))
