@@ -26,7 +26,7 @@ def generate(sentence):
     try:
         return story_gen(sentence)
     except Exception as e:
-        LOGGER.error(e)
+        # LOGGER.error(e)
         return {'status': False, 'msg': e}, 400
 
 def input(words: list = None):
@@ -44,11 +44,11 @@ def input(words: list = None):
             generate_text += raw_text + ' '
         return generate_text
     except Exception as e:
-        LOGGER.error(e)
+        # LOGGER.error(e)
         return {'status': False, 'msg': e}, 400
 
 if __name__ == '__main__':
     # uvicorn.run(app=app, host='0.0.0.0', port=8000)
-    ex = {"name": "Emily", "wakeup": "take a shower","ocupation": "college","workplace": "Northwestern", "hobbies": "hang out with friends", "food": "pasta", "sleep": "finish homework"}
+    ex = {"name": "Emily", "wakeup": "take a shower", "occupation": "college", "workplace": "Northwestern", "hobbies": "hang out with friends", "food": "pasta", "sleep": "finish homework"}
 
     print(input(ex))
