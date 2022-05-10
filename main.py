@@ -5,19 +5,21 @@ from fastapi import FastAPI, File, UploadFile
 from starlette.middleware.cors import CORSMiddleware
 from sentence_generator import sentence_generator
 
+# from flask import Flask
 
+# app = Flask(__name__)
 
-# app = FastAPI()
-# origins = ["*"]
-# app.add_middleware(
-#     CORSMiddleware,
+app = FastAPI()
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
 
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 
-# )
+)
 
 story_gen = pipeline("text-generation", "jcpwfloi/gpt2-story-generation", handle_long_generation="hole", early_stopping=False)
 
@@ -26,9 +28,10 @@ def generate(sentence):
     try:
         return story_gen(sentence)
     except Exception as e:
-        LOGGER.error(e)
+        # LOGGER.error(e)
         return {'status': False, 'msg': e}, 400
 
+@app.post('/generate')
 def input(words: list = None):
     try:
         results = sentence_generator(words)
@@ -42,11 +45,12 @@ def input(words: list = None):
             else:
                 raw_text = generate(sentence)[0]['generated_text'].rsplit('.', 1)[0] + '.'
             generate_text += raw_text + ' '
-        return generate_text
+        return {'text': generate_text}
     except Exception as e:
-        LOGGER.error(e)
+        # LOGGER.error(e)
         return {'status': False, 'msg': e}, 400
 
 if __name__ == '__main__':
-    # uvicorn.run(app=app, host='0.0.0.0', port=8000)
-    print(input(["Emily", "take a shower", "college", "Northwestern", "hang out with my friends", "pasta", "finish my homework"]))
+    uvicorn.run(app=app, host='0.0.0.0', port=8000)
+    # # print(input(["Emily", "take a shower", "college", "Northwestern", "hang out with my friends", "pasta", "finish my homework"]))
+    # app.run(debug=True)
