@@ -15,7 +15,7 @@ def sentence_generator(kw):
 
     s1 = nlp([kw["name"], 'wakes up', kw["wakeup"]], **params) + ' After that, ' + kw["name"]
     s2 = nlp([kw["name"], fword1, kw["occupation"], 'at', kw["workplace"]], **params) + ' Today at ' + kw["occupation"] + ', ' + kw["name"]
-    s3 = nlp([kw["name"], 'favorite thing to do after', kw[2], 'is', kw[4]], **params) + kw["name"] + ' had a great time'
+    s3 = nlp([kw["name"], 'favorite thing to do after', kw["occupation"], 'is', kw["hobbies"]], **params) + kw["name"] + ' had a great time'
     s4 = nlp([kw["name"], 'eats', kw["food"], 'dinner'], **params) + kw["name"] + ' enjoyed'
     s5 = nlp([kw["name"], kw["sleep"], 'at night before going to bed'], **params) + ' It was a good way to end the day'
 
