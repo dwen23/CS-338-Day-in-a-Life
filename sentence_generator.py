@@ -5,9 +5,9 @@ def sentence_generator(kw):
     nlp = pipeline("k2t-base")  #loading the pre-trained model
     params = {"do_sample":True, "num_beams":4, "no_repeat_ngram_size":2, "early_stopping":True}    #decoding params
 
-    if kw[2] == 'college' or kw[2] == 'high school' or kw[2] == 'school':
+    if kw["occupation"] == 'college' or kw["occupation"] == 'high school' or kw["occupation"] == 'school':
         fword1 = 'student'
-    if kw[2] == 'work':
+    if kw["occupation"] == 'work':
         fword1 = 'job'
 
 
