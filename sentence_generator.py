@@ -17,7 +17,7 @@ def sentence_generator(key_words):
     s2 = nlp([key_words[0], fword1, key_words[2], 'at', key_words[3]], **params) + ' Today at ' + key_words[3] + ', ' + key_words[0]
     s3 = nlp([key_words[0], 'favorite thing to do after', key_words[2], 'is', key_words[4]], **params) + key_words[0] + ' had a great time'
     s4 = nlp([key_words[0], 'eats', key_words[5], 'for dinner'], **params) + key_words[0] + ' enjoyed'
-    s5 = nlp([key_words[0], key_words[6], 'at night before going to bed'], **params) + 'It was a good way to end the day'
+    s5 = nlp([key_words[0], key_words[6], 'at night before going to bed'], **params) + ' It was a good way to end the day'
 
     return [s1, s2, s3, s4, s5]
 
