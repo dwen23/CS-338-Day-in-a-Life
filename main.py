@@ -49,4 +49,6 @@ def input(words: list = None):
 
 if __name__ == '__main__':
     # uvicorn.run(app=app, host='0.0.0.0', port=8000)
-    print(input(["Emily", "take a shower", "college", "Northwestern", "hang out with my friends", "pasta", "finish my homework"]))
+    ex = {"name": "Emily", "wakeup": "take a shower","ocupation": "college","workplace": "Northwestern", "hobbies": "hang out with friends", "food": "pasta", "sleep": "finish homework"}
+
+    print(input(["Emily", "take a shower", "college", "Northwestern", "hang out with friends", "pasta", "finish homework"]))

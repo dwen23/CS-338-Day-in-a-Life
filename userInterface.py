@@ -32,7 +32,7 @@ f1 = Entry(window,textvariable=sleep).grid(row = 5,column = 8,columnspan=3)
 g1 = Entry(window,textvariable=food).grid(row = 6,column = 8,columnspan=3)
 
 def createStory():
-    answers = [name.get(),wakeup.get(),ocupation.get(),work.get(), hobbies.get(), food.get(), sleep.get()]
+    answers = {"name": name.get(), "wakeup": wakeup.get(),"ocupation": ocupation.get(),"workplace": work.get(), "hobbies": hobbies.get(), "food": food.get(), "sleep": sleep.get()}
 
     Label(window, text = input(answers),wraplength=1000, font=("Arial",36)).grid(row = 10, column = 0)
 
