@@ -2,24 +2,45 @@ from keytotext import pipeline
 
 def sentence_generator(kw):
 
-    nlp = pipeline("k2t-base")  #loading the pre-trained model
-    params = {"do_sample":True, "num_beams":4, "no_repeat_ngram_size":2, "early_stopping":True}    #decoding params
+    nlp = pipeline('k2t-base')  #loading the pre-trained model
+    params = {'do_sample':True, 'num_beams':4, 'no_repeat_ngram_size':2, 'early_stopping':True}    #decoding params
 
-    if kw["occupation"] == 'college' or kw["occupation"] == 'high school' or kw["occupation"] == 'school':
-        fword1 = 'student'
-    if kw["occupation"] == 'work':
-        fword1 = 'job'
+    spronoun = cleanPronoun(kw['sPronouns'])
+    ppronoun = cleanPronoun(kw['pPronouns'])
+
+    s1 = nlp([kw['home'], 'wakes up', kw['wake']], **params) + ' After that, ' + spronoun
+ 
+    if kw['living'] == 'college':
+        s2 = nlp([spronoun, 'student', kw['living'], 'at', kw['school']], **params) + ' Today at ' + kw['living'] + ', ' + kw['home']
+        s4 = nlp([ppronoun, kw['major'], 'exam']) + ' Then ' + spronoun + ' went home'
+    elif kw['living'] == 'high school':
+        s2 = nlp([spronoun, kw['living'], 'student'], **params) + ' Today at school, ' + kw['home']
+        s4 = nlp([spronoun, 'enjoyed', kw['fSubject'], 'and' 'test', kw['lSubject']], **params) + ' Then ' + spronoun + ' went home'
+    elif kw['living'] == 'work':
+        s2 = nlp([spronoun, 'works', kw['work']], **params) + ' Today at school, ' + kw['home']
+        s4 = nlp([spronoun, kw['doWork']], **params) + ' Then ' + spronoun + ' went home'
+    elif kw['living'] == 'nothing':
+        s2 = nlp([spronoun, kw['nothing']], **params) + ' Today, ' + kw['home']
+        s3 = nlp(['Today', 'fear', kw['fear']], **params) + ' It was ' + spronoun + ' worst nightmare'
+        s4 = nlp([ppronoun, 'favorite thing to do is', kw['hobby']], **params) + ' ' + spronoun + ' had a great time'
+        s5 = nlp([spronoun, 'lives', kw['city']] **params) + ' So, today'
+        s6 = nlp([spronoun, 'eats', kw['food'], 'dinner'], **params) + ' ' + spronoun + ' enjoyed'
+        s7 = nlp([spronoun, kw['bed'], 'at night before going to bed'], **params) + ' It was a good way to end the day'
+        return [s1, s2, s3, s4, s5, s6, s7]
 
 
+    s3 = nlp(['Today at', kw['living'], 'fear', kw['fear']], **params) + ' It was ' + spronoun + ' worst nightmare'
+    s5 = nlp([spronoun, 'favorite thing to do after', kw['living'], 'is', kw['hobby']], **params) + kw['home'] + ' had a great time'
+    s6 = nlp([spronoun, 'lives', kw['city']] **params) + ' So, today'
+    s7 = nlp([spronoun, 'eats', kw['food'], 'dinner'], **params) + kw['home'] + ' enjoyed'
+    s8 = nlp([spronoun, kw['bed'], 'at night before going to bed'], **params) + ' It was a good way to end the day'
 
-
-    s1 = nlp([kw["name"], 'wakes up', kw["wakeup"]], **params) + ' After that, ' + kw["name"]
-    s2 = nlp([kw["name"], fword1, kw["occupation"], 'at', kw["workplace"]], **params) + ' Today at ' + kw["occupation"] + ', ' + kw["name"]
-    s3 = nlp([kw["name"], 'favorite thing to do after', kw["occupation"], 'is', kw["hobbies"]], **params) + kw["name"] + ' had a great time'
-    s4 = nlp([kw["name"], 'eats', kw["food"], 'dinner'], **params) + kw["name"] + ' enjoyed'
-    s5 = nlp([kw["name"], kw["sleep"], 'at night before going to bed'], **params) + ' It was a good way to end the day'
-
-    return [s1, s2, s3, s4, s5]
+    return [s1, s2, s3, s4, s5, s6, s7, s8]
 
 
     
+def cleanPronoun(pronoun):
+    pronoun = pronoun.split('/')[0]
+    pronoun = pronoun.split(',')[0]
+    pronoun = pronoun.split(' ')[0]
+    return pronoun
