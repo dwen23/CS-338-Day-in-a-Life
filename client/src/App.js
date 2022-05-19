@@ -14,8 +14,7 @@ import { Fear } from './components/Fear';
 import { LoadingIcon } from './components/LoadingIcon'
 
 
-let jsonData = [];
-let tempData = ["Emily", "take a shower", "college", "Northwestern", "hang out with my friends", "pasta", "finish my homework"];
+let jsonData = {};
 function App() {
   const [currQuestion, setcurrQuestions] = React.useState('name');
   const [ValueA, setValueA] = React.useState("");
@@ -78,9 +77,9 @@ function App() {
 
                 <h5>
                   {ValueA}
-                  <button class="btn btn-info" onClick={refreshPage()}>
+                  {/* <button class="btn btn-info" onClick={refreshPage()}>
                     Try again
-                  </button>
+                  </button> */}
                 </h5>
 
               </div>
@@ -97,7 +96,7 @@ function App() {
   function toNextQuestion() {
     var e = document.getElementById(currQuestion);
     var strUser = e.getAttribute('nextQuestion');
-    jsonData.push(e.value)
+    jsonData[currQuestion]=e.value;
     console.log(jsonData)
     if (strUser === 'options') {
       setcurrQuestions(e.value)
@@ -134,7 +133,7 @@ function App() {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json', 'accept': 'application/json' },
-      body: JSON.stringify(tempData) // body data type must match "Content-Type" header
+      body: JSON.stringify(jsonData) // body data type must match "Content-Type" header
     }).then(response => response.json()).then(data => { console.log(data); setValueA(data.text) });
   }
 

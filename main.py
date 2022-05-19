@@ -32,7 +32,7 @@ def generate(sentence):
         return {'status': False, 'msg': e}, 400
 
 @app.post('/generate')
-def input(words: list = None):
+def input(words):
     try:
         results = sentence_generator(words)
         generate_text = ''
