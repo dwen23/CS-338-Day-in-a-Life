@@ -1,23 +1,23 @@
 from keytotext import pipeline
 
-def sentence_generator(key_words):
+def sentence_generator(kw):
 
     nlp = pipeline("k2t-base")  #loading the pre-trained model
     params = {"do_sample":True, "num_beams":4, "no_repeat_ngram_size":2, "early_stopping":True}    #decoding params
 
-    if key_words[2] == 'college' or key_words[2] == 'high school' or key_words[2] == 'school':
+    if kw["occupation"] == 'college' or kw["occupation"] == 'high school' or kw["occupation"] == 'school':
         fword1 = 'student'
-    if key_words[2] == 'work':
+    if kw["occupation"] == 'work':
         fword1 = 'job'
 
 
 
 
-    s1 = nlp([key_words[0], 'wakes up', key_words[1]], **params) + ' After that, ' + key_words[0]
-    s2 = nlp([key_words[0], fword1, key_words[2], 'at', key_words[3]], **params) + ' Today at ' + key_words[2] + ', ' + key_words[0]
-    s3 = nlp([key_words[0], 'favorite thing to do after', key_words[2], 'is', key_words[4]], **params) + key_words[0] + ' had a great time'
-    s4 = nlp([key_words[0], 'eats', key_words[5], 'for dinner'], **params) + key_words[0] + ' enjoyed'
-    s5 = nlp([key_words[0], key_words[6], 'at night before going to bed'], **params) + ' It was a good way to end the day'
+    s1 = nlp([kw["name"], 'wakes up', kw["wakeup"]], **params) + ' After that, ' + kw["name"]
+    s2 = nlp([kw["name"], fword1, kw["occupation"], 'at', kw["workplace"]], **params) + ' Today at ' + kw["occupation"] + ', ' + kw["name"]
+    s3 = nlp([kw["name"], 'favorite thing to do after', kw["occupation"], 'is', kw["hobbies"]], **params) + kw["name"] + ' had a great time'
+    s4 = nlp([kw["name"], 'eats', kw["food"], 'dinner'], **params) + kw["name"] + ' enjoyed'
+    s5 = nlp([kw["name"], kw["sleep"], 'at night before going to bed'], **params) + ' It was a good way to end the day'
 
     return [s1, s2, s3, s4, s5]
 
