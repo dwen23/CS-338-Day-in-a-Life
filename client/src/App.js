@@ -10,9 +10,16 @@ import { WhyNothing } from './components/WhyNothing'
 import { School } from './components/School'
 import { Major } from './components/Major'
 import { Food } from './components/Food'
-import { Fear } from './components/Fear';
+import { Fear } from './components/Fear'
 import { LoadingIcon } from './components/LoadingIcon'
-
+import { Bed } from './components/Bed'
+import { City } from './components/City'
+import { FSubject } from './components/FSubject'
+import { Hobby } from './components/Hobby'
+import { LSubject } from './components/LSubject';
+import { Wake } from './components/Wake'
+import { SPronouns } from './components/SPronouns'
+import { PPronouns } from './components/PPronouns'
 
 let jsonData = {};
 function App() {
@@ -25,6 +32,30 @@ function App() {
       case "name":
         return (
           <Home />
+        ) 
+      case "wake":
+        return (
+          <Wake />
+        )
+      case "bed":
+        return (
+          <Bed />
+        )
+      case "city":
+        return (
+          <City />
+        )
+      case "fSubject":
+        return (
+          <FSubject />
+        )
+      case "hobby":
+        return (
+          <Hobby />
+        )
+      case "lSubject":
+        return (
+          <LSubject />
         )
       case "mornings":
         return (
@@ -67,6 +98,14 @@ function App() {
         return (
           <Fear />
         )
+      case "sPronouns":
+        return (
+          <SPronouns />
+        )
+      case "pPronouns":
+        return (
+          <PPronouns />
+        )
       case "done":
         return (
           <>
@@ -77,9 +116,6 @@ function App() {
 
                 <h5>
                   {ValueA}
-                  {/* <button class="btn btn-info" onClick={refreshPage()}>
-                    Try again
-                  </button> */}
                 </h5>
 
               </div>
@@ -89,14 +125,10 @@ function App() {
     }
   }
 
-  function refreshPage() {
-    window.location.reload();
-  }
-
   function toNextQuestion() {
     var e = document.getElementById(currQuestion);
     var strUser = e.getAttribute('nextQuestion');
-    jsonData[currQuestion]=e.value;
+    jsonData[currQuestion] = e.value;
     console.log(jsonData)
     if (strUser === 'options') {
       setcurrQuestions(e.value)

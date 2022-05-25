@@ -5,8 +5,8 @@ export class Nothing extends Component {
         return (
             <div class="card">
                 <div class="card-body">
-                    Do you have any plans for the future?
-                    <input type="answer" class="form-control" id='nothing' nextQuestion='whyNothing'></input>
+                    What do you usually do at home?
+                    <input type="answer" class="form-control" id='nothing' nextQuestion='city'></input>
                 </div>
             </div>
         )

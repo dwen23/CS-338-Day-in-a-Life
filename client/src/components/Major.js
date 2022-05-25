@@ -6,7 +6,7 @@ export class Major extends Component {
             <div class="card">
                 <div class="card-body">
                     What is your major?
-                    <input type="answer" class="form-control" id='major' nextQuestion='food'></input>
+                    <input type="answer" class="form-control" id='major' nextQuestion='school'></input>
                 </div>
             </div>
         )

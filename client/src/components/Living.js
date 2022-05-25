@@ -9,9 +9,10 @@ export class Living extends Component {
                     
                     <select class="custom-select w-100" aria-label="Default select example" id="living" nextQuestion='options'>
                         <option selected>Choose...</option>
-                        <option value="school">School</option>
+                        <option value="fSubject">High School</option>
+                        <option value="major">College</option>
                         <option value="work">Work</option>
-                        <option value="nothing">Nothing</option>
+                        <option value="nothing">None of the above</option>
                     </select>
                     
                 </div>

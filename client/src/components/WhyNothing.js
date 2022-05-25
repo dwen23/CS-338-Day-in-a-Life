@@ -5,7 +5,7 @@ export class WhyNothing extends Component {
     return (
       <div class="card">
         <div class="card-body">
-          Why are you currently doing nothing?
+          Are you retired?
           <input type="answer" class="form-control" id='whyNothing' nextQuestion='fear'></input>
         </div>
       </div>

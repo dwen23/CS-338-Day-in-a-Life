@@ -5,7 +5,7 @@ export class Fear extends Component {
         return (
             <div class="card">
                 <div class="card-body">
-                    What is your greatest fear?
+                    What animal scares you the most?
                     <input type="answer" class="form-control" id='fear' nextQuestion='done'></input>
                 </div>
             </div>

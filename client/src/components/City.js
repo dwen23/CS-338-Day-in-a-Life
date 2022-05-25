@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
-export class Food extends Component {
+export class City extends Component {
     render() {
         return (
             <div class="card">
                 <div class="card-body">
-                    What is your favorite food?
-                    <input type="answer" class="form-control" id='food' nextQuestion='bed'></input>
+                    What city do you live in?
+                    <input type="answer" class="form-control" id='city' nextQuestion='food'></input>
                 </div>
             </div>
         )
     }
 }
 
-export default Food
+export default City

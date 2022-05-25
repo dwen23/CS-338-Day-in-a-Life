@@ -5,8 +5,8 @@ export class DoWork extends Component {
         return (
             <div class="card">
                 <div class="card-body">
-                    What do you do when you work?
-                    <input type="answer" class="form-control" id='doWork' nextQuestion='fear'></input>
+                    What is a common task you have at work?
+                    <input type="answer" class="form-control" id='doWork' nextQuestion='city'></input>
                 </div>
             </div>
         )
