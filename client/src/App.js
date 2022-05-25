@@ -45,7 +45,7 @@ function App() {
         return (
           <City />
         )
-      case "fSubject":
+      case "high school":
         return (
           <FSubject />
         )
@@ -86,7 +86,7 @@ function App() {
         return (
           <School />
         )
-      case "major":
+      case "college":
         return (
           <Major />
         )
