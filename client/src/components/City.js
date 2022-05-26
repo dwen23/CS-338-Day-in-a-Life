@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 export class City extends Component {
     render() {
         return (
-            <div class="card">
-                <div class="card-body">
+            <div className="card">
+                <div className="card-body">
                     What city do you live in?
-                    <input type="answer" class="form-control" id='city' nextQuestion='food'></input>
+                    <input type="answer" className="form-control" id='city' nextquestion='food'></input>
                 </div>
             </div>
         )

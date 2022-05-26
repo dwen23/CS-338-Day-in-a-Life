@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 export class WhyNothing extends Component {
   render() {
     return (
-      <div class="card">
-        <div class="card-body">
+      <div className="card">
+        <div className="card-body">
           Are you retired?
-          <input type="answer" class="form-control" id='whyNothing' nextQuestion='fear'></input>
+          <input type="answer" className="form-control" id='whyNothing' nextquestion='fear'></input>
         </div>
       </div>
     )

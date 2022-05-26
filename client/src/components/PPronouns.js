@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 export class PPronouns extends Component {
   render() {
     return (
-        <div class="card">
-        <div class="card-body">
+        <div className="card">
+        <div className="card-body">
             What are your possessive pronouns?
-            <input type="answer" class="form-control" id='pPronouns' nextQuestion='wake'></input>
+            <input type="answer" className="form-control" id='pPronouns' nextquestion='wake'></input>
         </div>
     </div>
     )

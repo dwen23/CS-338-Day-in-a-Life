@@ -127,7 +127,7 @@ function App() {
 
   function toNextQuestion() {
     var e = document.getElementById(currQuestion);
-    var strUser = e.getAttribute('nextQuestion');
+    var strUser = e.getAttribute('nextquestion');
     jsonData[currQuestion] = e.value;
     console.log(jsonData)
     if (strUser === 'options') {
@@ -140,8 +140,8 @@ function App() {
   function currButton() {
     if (currQuestion === 'fear') {
       return (
-        <button type="button" class="btn btn-success" onClick={summitAnswers}>
-          Summit
+        <button type="submit" className="btn btn-success" onClick={submitAnswers}>
+          Submit
         </button>
       )
     } else if (currQuestion === 'done') {
@@ -150,14 +150,14 @@ function App() {
       )
     }
     return (
-      <button type="button" class="btn btn-primary" onClick={toNextQuestion}>
+      <button type="submit" className="btn btn-primary" onClick={toNextQuestion}>
         Next
       </button>
     )
   }
 
 
-  function summitAnswers() {
+  function submitAnswers() {
     
     var e = document.getElementById(currQuestion);
     jsonData[currQuestion] = e.value;
@@ -175,10 +175,10 @@ function App() {
 
   return (
     <div>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></link>
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">Day in the Life</span>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous"></link>
+      <nav className="navbar navbar-dark bg-dark">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1">Day in the Life</span>
         </div>
       </nav>
 
@@ -191,14 +191,14 @@ function App() {
         <br />
       </div>
 
-      <div class="container">
-        <div class='row'>
-          <div class="col">
+      <div className="container">
+        <div className='row'>
+          <div className="col">
           </div>
-          <div class="col-7">
+          <div className="col-7">
             {questions(currQuestion)}
           </div>
-          <div class="col">
+          <div className="col">
           </div>
         </div>
 
@@ -209,13 +209,13 @@ function App() {
           <br />
         </div>
 
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
           </div>
-          <div class="col-5">
+          <div className="col-5">
 
           </div>
-          <div class="col">
+          <div className="col">
             {currButton()}
           </div>
         </div>

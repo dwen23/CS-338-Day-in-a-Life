@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 
+
+
 export class Living extends Component {
     render() {
         return (
-            <div class="card">
-                <div class="card-body">
+            <div className="card">
+                <div className="card-body">
                     <p>What do you do for a living?</p>
                     
-                    <select class="custom-select w-100" aria-label="Default select example" id="living" nextQuestion='options'>
-                        <option selected>Choose...</option>
+                    <select className="custom-select w-100" aria-label="Default select example" id="living" nextquestion='options'
+                            defaultValue={"choose"}>
+                        <option value="choose" disabled>Choose...</option>
                         <option value="high school">High School</option>
                         <option value="college">College</option>
                         <option value="work">Work</option>

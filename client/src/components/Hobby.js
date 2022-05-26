@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 export class Hobby extends Component {
     render() {
         return (
-            <div class="card">
-                <div class="card-body">
+            <div className="card">
+                <div className="card-body">
                     What is your favorite hobby?
-                    <input type="answer" class="form-control" id='hobby' nextQuestion='fear'></input>
+                    <input type="answer" className="form-control" id='hobby' nextquestion='fear'></input>
                 </div>
             </div>
         )

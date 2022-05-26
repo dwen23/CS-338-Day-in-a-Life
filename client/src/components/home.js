@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 export class Home extends Component {
     render() {
         return (
-            <div class="card">
-                <div class="card-body">
+            <div className="card">
+                <div className="card-body">
                     What is your name?
-                    <input type="text" class="form-control" id='name' nextQuestion='sPronouns'></input>
+                    <input type="text" className="form-control" id='name' nextquestion='sPronouns'></input>
                 </div>
             </div>
         )
