@@ -161,7 +161,8 @@ function App() {
     
     var e = document.getElementById(currQuestion);
     jsonData[currQuestion] = e.value;
-
+    console.log(jsonData);
+    
     setcurrQuestions('done')
     // Send data to the backend via POST
     fetch('http://127.0.0.1:8000/generate', {  // Enter your IP address here
