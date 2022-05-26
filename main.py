@@ -1,4 +1,5 @@
 from transformers import pipeline
+import json
 import uvicorn
 import os
 from fastapi import FastAPI, File, UploadFile
@@ -32,7 +33,10 @@ def generate(sentence):
         return {'status': False, 'msg': e}, 400
 
 @app.post('/generate')
-def input(words):
+def input(words:dict):
+    # words = json.loads(words)
+    results = sentence_generator(words)
+    # print(results)
     try:
         results = sentence_generator(words)
         generate_text = ''
