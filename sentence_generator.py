@@ -15,23 +15,23 @@ def sentence_generator(kw):
         kw[key] = changePronouns(kw[key], spronoun, ppronoun)
  
     if kw['living'] == 'college':
-        s1 = kw['name'] + ' wakes up and gets ready for school. ' + nlp(['This morning,', spronoun, 'starts the day by', kw['wake']], **params) + ' ' + spronoun.capitalize() + ' gets ready for school and'
+        s1 = kw['name'] + ' wakes up this morning and has to go to school. ' + nlp(['This morning,', spronoun, 'starts the day by', kw['wake']], **params) + ' ' + spronoun.capitalize() + ' gets ready for school by'
         s2 = nlp([spronoun, 'student', 'at', kw['school']], **params) + ' Today at school, ' + kw['name']
         s3 = 'While ' + spronoun + ' is at school, ' + spronoun + ' sees a ' + kw['fear'] + ' running towards ' + ppronoun + ' friend. ' + spronoun.capitalize()
         s4 = 'After the incident with the ' + kw['fear'] + ', ' + kw['name'] + ' goes to class. ' + nlp([ppronoun, 'favorite class', kw['college']]) + ' During class,'
         s5 = nlp([ppronoun, 'favorite thing to do after school is', kw['hobby']], **params) + ' Today, ' + kw['name'] + ' had a great time'
     elif kw['living'] == 'high school':
-        s1 = nlp([kw['name'], 'wakes up', kw['wake'], 'and gets ready for school'], **params) + ' As ' + spronoun + ' packs her bag' 
+        s1 = kw['name'] + ' wakes up this morning and has to go to school. ' + nlp(['This morning,', spronoun, 'starts the day by', kw['wake']], **params) + ' ' + spronoun.capitalize() + ' gets ready for school by'
         s2 = nlp([spronoun, 'is', kw['living'], 'student'], **params) + ' Today at school, ' + kw['name']
-        s3 = 'While ' + spronoun + ' is at school ' + spronoun + ' sees a ' + kw['fear'] + ' coming towards'
-        s4 = nlp([spronoun, 'enjoyed', kw['high school'], 'and' 'test', kw['lSubject']], **params) + + ' After school ended,'
-        s5 = nlp([ppronoun, 'favorite thing to do after school is', kw['hobby']], **params) + ' ' + kw['name'] + ' had a great time'
+        s3 = 'While ' + spronoun + ' is at school, ' + spronoun + ' sees a ' + kw['fear'] + ' running towards ' + ppronoun + ' friend. ' + spronoun.capitalize()
+        s4 = 'After the incident with the ' + kw['fear'] + ', ' + kw['name'] + ' goes to ' + kw['high school'] + ' class. Later ' + ppronoun + ' has a test in ' + kw['lSubject']
+        s5 = nlp([ppronoun, 'favorite thing to do after school is', kw['hobby']], **params)  + ' Today, ' + kw['name'] + ' had a great time'
     elif kw['living'] == 'work':
-        s1 = nlp([kw['name'], 'wakes up', kw['wake'], 'and gets ready for work'], **params) + ' As ' + spronoun + ' packs her bag' 
-        s2 = nlp([spronoun, 'works', kw['work']], **params) + ' Today at work, ' + kw['name']
-        s3 = 'While ' + spronoun + ' is at work ' + spronoun + ' sees a ' + kw['fear'] + ' coming towards'
-        s4 = nlp([spronoun, kw['doWork']], **params) + + ' After work ended,'
-        s5 = nlp([spronoun, 'favorite thing to do after work is', kw['hobby']], **params) + ' ' + kw['name'] + ' had a great time'
+        s1 = kw['name'] + ' wakes up this morning and has to go to work. ' + nlp(['This morning,', spronoun, 'starts the day by', kw['wake']], **params) + ' ' + spronoun.capitalize() + ' gets ready for work by'
+        s2 = nlp([spronoun, 'works', kw['work']], **params) + ' Today while ' + spronoun + ' is at work, ' + spronoun
+        s3 = 'While ' + spronoun + ' is at work ' + spronoun + ' sees a ' + kw['fear'] + ' coming towards ' + ppronoun + ' coworker. ' + spronoun.capitalize()
+        s4 = 'After the incident with the ' + kw['fear'] + ', ' + kw['name'] + ' keeps working. ' +  nlp(['At work', spronoun, 'her boss tells her to', kw['doWork']], **params) + ' Today,'      
+        s5 = nlp(['After work,', ppronoun, 'favorite thing to do is', kw['hobby']], **params)  + ' Today, ' + kw['name'] + ' had a great time'
 
     elif kw['living'] == 'nothing':
         s1 = nlp([kw['name'], 'wakes up', kw['wake']], **params) + ' As ' + spronoun + ' gets ready for the day' 
@@ -44,11 +44,12 @@ def sentence_generator(kw):
         s_list = [s1, s2, s3, s4, s5, s6, s7]
         for i, s in enumerate(s_list):
             s_list[i] = wasToIs(s)
+            s_list[i] = noSheena(s_list[i])
         return s_list
 
     s6 = nlp([spronoun, 'lives', kw['city']], **params) + ' ' + spronoun.capitalize() + ' likes the area because'
     s7 = spronoun.capitalize() + ' eats ' + kw['food'] + ' for dinner today. She enjoyed' 
-    s8 = nlp(['Before going to bed every night,', spronoun, kw['bed']], **params) + ' Today as she gets ready for bed,'
+    s8 = nlp(['Before going to bed,', kw['name'], 'likes to', kw['bed']], **params) + ' Today as she gets ready for bed,'
 
     s_list = [s1, s2, s3, s4, s5, s6, s7, s8]
     for i, s in enumerate(s_list):
@@ -94,6 +95,14 @@ def noSheena(s):
         if word == "Sheena":
             s[i] = "She"
         if word == "sheena":
+            s[i] = "she"
+        if word == "Sheena's":
+            s[i] = "She"
+        if word == "sheena's":
+            s[i] = "she"
+        if word == "Shepars":
+            s[i] = "She"
+        if word == "shepars":
             s[i] = "she"
     s = " ".join(s)
     return s
