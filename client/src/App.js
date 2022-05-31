@@ -161,7 +161,6 @@ function App() {
     
     var e = document.getElementById(currQuestion);
     jsonData[currQuestion] = e.value;
-    // console.log(jsonData)
 
     setcurrQuestions('done')
 

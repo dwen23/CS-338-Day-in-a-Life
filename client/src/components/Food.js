@@ -6,7 +6,7 @@ export class Food extends Component {
             <div className="card">
                 <div className="card-body">
                     What is your favorite food?
-                    <input type="answer" className="form-control" id='food' nextquestion='bed'></input>
+                    <input type="answer" className="form-control" id='food' nextquestion='living'></input>
                 </div>
             </div>
         )
