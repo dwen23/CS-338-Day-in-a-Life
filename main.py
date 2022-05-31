@@ -55,6 +55,9 @@ def input(words:dict):
         return {'status': False, 'msg': e}, 400
 
 if __name__ == '__main__':
-    uvicorn.run(app=app, host='0.0.0.0', port=8000)
-    # # print(input(["Emily", "take a shower", "college", "Northwestern", "hang out with my friends", "pasta", "finish my homework"]))
+    # uvicorn.run(app=app, host='0.0.0.0', port=8000)
+    print(input({"name": "Emily", "sPronouns": "she", "pPronouns": "her", "wake": "make breakfast", "living": "college",
+                "school": "Northwestern", "college": "computer science", "fear": "tiger", "hobby": "hang out with my friends",
+                "city": "Evanston", "food": "pasta", "bed": "finish my homework"}))
     # app.run(debug=True)
+
