@@ -6,7 +6,7 @@ export class Wake extends Component {
         <div className="card">
         <div className="card-body">
             What do you do after you wake up?
-            <input type="text" className="form-control" id='wake' nextquestion='living'></input>
+            <input type="text" className="form-control" id='wake' nextquestion='food'></input>
         </div>
     </div>
     )

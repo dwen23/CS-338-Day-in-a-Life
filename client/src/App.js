@@ -161,15 +161,22 @@ function App() {
     
     var e = document.getElementById(currQuestion);
     jsonData[currQuestion] = e.value;
-    console.log(jsonData);
-    
+
     setcurrQuestions('done')
+
+    let headers = new Headers();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+
     // Send data to the backend via POST
     fetch('http://127.0.0.1:8000/generate', {  // Enter your IP address here
 
       method: 'POST',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json', 'accept': 'application/json' },
+      headers: headers,
       body: JSON.stringify(jsonData) // body data type must match "Content-Type" header
     }).then(response => response.json()).then(data => { console.log(data); setValueA(data.text) });
   }
